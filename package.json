@@ -1,0 +1,19 @@
+{
+  "name": "ashfall-protocol-android",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Standalone Android APK builder for Ashfall Protocol (Landscape + Fullscreen + Live Online Multiplayer + WebRTC Voice Chat)",
+  "scripts": {
+    "android:init": "node scripts/apply-landscape.mjs",
+    "android:sync": "npx cap sync android",
+    "apk:debug": "cd android && ./gradlew assembleDebug",
+    "apk:release": "cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}
