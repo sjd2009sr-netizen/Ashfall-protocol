@@ -4,7 +4,7 @@
   "private": true,
   "description": "Standalone Android APK builder for Ashfall Protocol (Landscape + Fullscreen + Live Online Multiplayer + WebRTC Voice Chat)",
   "scripts": {
-    "android:init": "node scripts/apply-landscape.mjs",
+    "android:init": "node apply-landscape.mjs",
     "android:sync": "npx cap sync android",
     "apk:debug": "cd android && ./gradlew assembleDebug",
     "apk:release": "cd android && ./gradlew assembleRelease"
