@@ -12,19 +12,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Prepare Android
+        run: |
+          npx cap add android || true
+          npx cap sync android
+
       - name: Build APK
         run: |
+          cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Android-APK
-          path: '**/build/outputs/apk/debug/*.apk'
+          name: Ashfall-Protocol-APK
+          path: android/app/build/outputs/apk/debug/*.apk
